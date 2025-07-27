@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshi's Portfolio</title>
+    <meta name="description" content="Sakshi Karande - Software Engineer - Data & AI/ML">
+    <meta name="keywords" content="AI engineer, Machine Learning engineer, Data Engineer, Data Scientist, Portfolio">
+    <meta name="author" content=" Sakshi Karande">
+    <link rel="canonical" href="https://sakshikarande.dev">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sakshikarade.dev">
+    <meta property="og:title" content="Sakshi Karande - Software Engineer - Data & AI/ML">
+    <meta property="og:description" content="Software Engineer with expertise in python, data science, AI/ML, LLM, statistics and distributed systems.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sakshikarande.dev">
+    <meta property="twitter:title" content="Sakshi Karande - Software Engineer - Data & AI/ML">
+    <meta property="twitter:description" content="Software Engineer with expertise in python, data science, AI/ML, LLM, statistics and distributed systems.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sakshi Karande",
+        "jobTitle": "Machine Learning Engineer",
+        "email": "sakshikarande38@gmail.com",
+        "url": "https://sakshikarande.dev",
+        "sameAs": [
+            "https://linkedin.com/in/sakshi-karande",
+            "https://github.com/sakshikarande26"
+        ],
+        "alumniOf": [
+            {
+                "@type": "CICS MS Computer Science",
+                "name": "University of Massachusetts Amherst"
+            },
+            {
+                "@type": "Computer Science", 
+                "name": "University of Mumbai"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-background"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Sakshi Karande</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li class="nav-item"><a href="#extracurricular" class="nav-link">Extra-curricular</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/About Section -->
+    <section id="about" class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h1 class="hero-title">Sakshi Karande</h1>
+                    <h2 class="hero-subtitle">Software Engineer</h2>
+                    <div class="about-me-section">
+                        <h3 class="about-title">About me</h3>
+                        <p class="hero-description">Passionate software engineer specializing in AI/ML and full-stack development. Currently pursuing Masters in Computer Science at UMass Amherst with expertise in LLMs, deep learning, and modern web technologies.</p>
+                        <div class="hero-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra, India</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-secondary">View Work</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://linkedin.com/in/sakshikarande" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/sakshikarande" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:sakshi.karande@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Animated Circle Container -->
+                <div class="animated-circle-container">
+                    <div class="animated-circle" id="animated-circle">
+                        <div class="circle-border"></div>
+                        <div class="circle-particles" id="circle-particles"></div>
+                        <div class="circle-content">
+                            <div class="profile-placeholder">
+                                <i class="fas fa-user"></i>
+                                <span>Photo Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Masters in Computer Science</h3>
+                        <h4>University of Massachusetts Amherst</h4>
+                        <span class="timeline-date">September 2025 - present</span>
+                        <p>GPA: -/4.0</p>
+                        <p> Coursework Pursuing: COMPSI589 Machine learning; DACSS610 Data Science; COMPSCI685 Advanced NLP</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelors of Engg. in Data Science & Artificial Intelligence</h3>
+                        <h4>University of Mumbai</h4>
+                        <span class="timeline-date"> August 2021 - May 2025</span>
+                        <p>GPA: 3.7/4.0</p>
+                        <p> Coursework Completed: C++; Object Oriented Programming: Java; Statistics; DBMS; Big Data with R; Distributed Computing; Recommendation Systems </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Junior Analyst - Artificial Intelligence</h3>
+                        <h4>Axia</h4>
+                        <span class="timeline-date">November 2024 - May 2025</span>
+                        <p>
+                            <ul>
+                                <li>
+                                  Built an agentic SEO training assistant using CrewAI and PhiData to automatically generate and evaluate employee training content.
+                                </li>
+                                <li>
+                                  Designed and deployed modular RESTful APIs with FastAPI to orchestrate agent behavior, memory, and role-based logic, enabling scalable multi-agent task execution.
+                                </li>
+                                <li>
+                                  Engineered "Futurists," a Japanese horoscope platform leveraging Groq LLMs, LangChain, and LangGraph to convert symbolic Yin-Yang charts into structured prompts—delivering witty daily Do’s and Don’ts and boosting user engagement.
+                                </li>
+                                <li>
+                                  Applied advanced prompt engineering and iterative tuning to enhance semantic accuracy and tone alignment, significantly reducing LLM hallucinations in production outputs.
+                                </li>
+                              </ul>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>AI Engineer & Research Intern</h3>
+                        <h4>Axia</h4>
+                        <span class="timeline-date">August 2024 - November 2024</span>
+                        <p>
+                            <ul>
+                                <li>Analyzed fleet trajectory data using pandas and NumPy to identify resource bottlenecks; implemented graph-based routing algorithms (BFS, DFS) that are now deployed in production, improving logistics efficiency.</li>
+                                <li>Developed a sentiment classification pipeline by scraping and preprocessing YouTube comments with NLTK and TF-IDF vectorization; trained a Logistic Regression model achieving 97% accuracy.</li>
+                                <li>Built an interactive quotation generation tool using ReTool, embedding JavaScript logic for dynamic pricing, discount automation, and conditional formatting, streamlining internal sales operations.</li>
+                                <li>Extracted and cleaned semi-structured data from restaurant menus (PDF/HTML) using web scraping and manual parsing; conducted EDA, and created reports representing visual insights with matplotlib to inform menu design strategy.</li>
+                            </ul>    
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Data Science Intern</h3>
+                        <h4>TechCryptors</h4>
+                        <span class="timeline-date">June 2023 - August 2023</span>
+                        <p>
+                            <ul>
+                                <li>Analyzed semi-structured data for 10,000+ real-estate records to identify market trends for stakeholder decision-making.</li>
+                                <li>Performed exploratory data analysis (EDA) and developed predictive models using pandas, matplotlib, and seaborn to uncover actionable insights.</li>
+                                <li>Engineered a Random Forest classification model achieving 92% accuracy, and applied K-means clustering to segment properties into 5 distinct location clusters; developed Tableau visualizations to effectively communicate analytical findings.</li>
+                                <li>Delivered a comprehensive report enabling data-driven decisions by highlighting pricing trends, location clusters, and property type patterns.</li>
+                            </ul>    
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Android Development Intern</h3>
+                        <h4>Klaere Technologies</h4>
+                        <span class="timeline-date">December 2022 - February 2023</span>
+                        <p>
+                            <ul>
+                                <li>Developed the TrekVisor app in Android Studio using Java to enable trek booking, safety features, and incident response.</li>
+                                <li>Integrated Google Maps API and Weather API for accurate navigation and real-time updates.</li>
+                                <li>Implemented a user-centric UI in XML and added emergency contact features to boost incident responsiveness.</li>
+                                <li>Enhanced user experience by significantly improving safety and incident response compared to previous systems.</li>
+                            </ul>    
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with payment integration</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-highlights">
+                            <ul>
+                                <li>Secure payment processing</li>
+                                <li>Inventory management</li>
+                                <li>Admin dashboard</li>
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/ecommerce" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://ecommerce.alexjohnson.dev" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Data Analytics Dashboard</h3>
+                        <p>Real-time analytics dashboard for business intelligence</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-highlights">
+                            <ul>
+                                <li>Interactive charts</li>
+                                <li>Real-time data updates</li>
+                                <li>Export capabilities</li>
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/data-dashboard" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://dashboard.alexjohnson.dev" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Mobile Task Manager</h3>
+                        <p>Cross-platform mobile app for project management</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <div class="project-highlights">
+                            <ul>
+                                <li>Cross-platform compatibility</li>
+                                <li>Real-time synchronization</li>
+                                <li>Offline support</li>
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/task-manager" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://taskmanager.alexjohnson.dev" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">Vue.js</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Node.js</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Express</span>
+                        <span class="skill-item">Django</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Database</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">Redis</span>
+                        <span class="skill-item">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">AWS</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">Jenkins</span>
+                        <span class="skill-item">Kubernetes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h3>Learning Efficacy Augmentation for Bose—Einstein Condensates of Numerical Representations: A Review</h3>
+                    <p class="publication-journal">IEEE Computer Society - 2024 First International Conference on Data, Computation and Communication (ICDCC)</p>
+                    <span class="publication-year">April 2025</span>
+                    <p class="publication-authors">Authors: <strong>Sakshi Karande</strong>; Tej More; Raunak Joshi;  Neha Raut</p>
+                    <a href="https://ieeexplore.ieee.org/document/10961567" target="_blank" class="publication-link">
+                        <i class="fas fa-external-link-alt"></i> View Publication
+                    </a>
+                </div>
+
+                <div class="publication-item">
+                    <h3>Sovereign Gold Price Prognostication using Multi-head Attention Based Transformers</h3>
+                    <p class="publication-journal">IEEE - 3rd International Conference on Sustainable Computing and Smart Systems
+                        (ICSCSS 2025)</p>
+                    <span class="publication-year">August 2025</span>
+                    <p class="publication-authors">Authors: <strong>Sakshi Karande</strong>; Tej More; Raunak Joshi;  Neha Raut</p>
+                    <a href="" target="_blank" class="publication-link">
+                        <i class="fas fa-external-link-alt"></i> Publication under progress
+                    </a>
+                </div>
+
+                <div class="publication-item">
+                    <h3>Unlocking the Power of Data Augmentation with Generative Adversarial Networks (GANs)</h3>
+                    <p class="publication-journal">VCET Techzette - Technical Magazine [ISSIN:2584-0886]</p>
+                    <span class="publication-year">February 2025</span>
+                    <p class="publication-authors">Author: <strong> Sakshi Karande</strong></p>
+                    <a href="https://techz.vcet.edu.in/2025/02/06/unlocking-the-power-of-data-augmentation-with-generative-adversarial-networks-gans/" target="_blank" class="publication-link">
+                        <i class="fas fa-external-link-alt"></i> View Publication
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>'Top student' in the third year of Bachelors of Engineering </h3>
+                    <span class="achievement-year">2023</span>
+                    <p>Department of Data Science & AI at VCET(University of Mumbai)</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3> Winner</h3>
+                    <span class="achievement-year">2023</span>
+                    <p>Oscillation - Technical Paper Presentation Competition</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Winner</h3>
+                    <span class="achievement-year">2023</span>
+                    <p>Paperathon - Technical Research Competition</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>'Runner up' at State Entrepreneurship Competition</h3>
+                    <span class="achievement-year">2021</span>
+                    <p>Issued by Vivek College of Science (University of Mumbai)</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Microsoft Azure Certified: Cloud Fundamentals</h3>
+                    <span class="achievement-year">2023</span>
+                    <p>Certified by Microsoft Learn Students Club</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Java Programming Certification</h3>
+                    <span class="achievement-year">2023</span>
+                    <p>Certified by Infosys Springboard</p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra-curricular Section -->
+    <section id="extracurricular" class="section">
+        <div class="container">
+            <h2 class="section-title">Extra-curricular</h2>
+            <div class="extracurricular-list">
+
+                <div class="extracurricular-item">
+                    <h3>AI/ML Development Lead @Microsoft Learn Students Club - Student Chapter</h3>
+                    <span class="extracurricular-year">2022-Present</span>
+                    <p>
+                        <ul>
+                            <l>Conducted Git & GitHub Workshop for 250+ sophomore year students</l>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="extracurricular-item">
+                    <h3>Social Media & Technical Team Member @National Students Data Corps- Student Chapter</h3>
+                    <span class="extracurricular-year">2020-Present</span>
+                    <p>Active contributor to various open source projects</p>
+                </div>
+
+                <div class="extracurricular-item">
+                    <h3>Tech Meetup Organizer - JavaScript Community</h3>
+                    <span class="extracurricular-year">2021-Present</span>
+                    <p>Organizing monthly meetups for local JavaScript developers</p>
+                </div>
+
+                <div class="extracurricular-item">
+                    <h3>Mentor for CS Students</h3>
+                    <span class="extracurricular-year">2022-Present</span>
+                    <p>Mentoring computer science students in career development</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:alex.johnson@email.com">alex.johnson@email.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://linkedin.com/in/alexjohnson" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/alexjohnson" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alex Johnson. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
