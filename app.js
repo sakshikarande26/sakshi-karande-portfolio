@@ -42,7 +42,6 @@ function initParticleBackground() {
 
     // Track touch movement for mobile
     document.addEventListener('touchmove', (e) => {
-        e.preventDefault();
         if (e.touches.length > 0) {
             mouseX = e.touches[0].clientX;
             mouseY = e.touches[0].clientY;
@@ -53,7 +52,7 @@ function initParticleBackground() {
                 isInteracting = false;
             }, 150);
         }
-    }, { passive: false });
+    }, { passive: true });
 
     // Touch start/end events
     document.addEventListener('touchstart', (e) => {
