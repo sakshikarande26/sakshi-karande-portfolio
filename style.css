@@ -908,7 +908,7 @@ body {
 
 .hero-title {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 700;
     background: linear-gradient(135deg, #f8fafc, #779ECB, #B3CDE0);
     background-clip: text;
@@ -920,7 +920,7 @@ body {
 
 .hero-subtitle {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
     background: linear-gradient(135deg, #779ECB, #966FD6);
     background-clip: text;
     -webkit-background-clip: text;
@@ -954,7 +954,7 @@ body {
     align-items: center;
     gap: 8px;
     color: #B3CDE0;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     margin-bottom: 20px;
 }
 
@@ -978,13 +978,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: clamp(40px, 8vw, 50px);
+    height: clamp(40px, 8vw, 50px);
     background: linear-gradient(135deg, rgba(119, 158, 203, 0.2), rgba(179, 205, 224, 0.1));
     border: 1px solid rgba(119, 158, 203, 0.3);
     border-radius: 50%;
     color: #779ECB;
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
 }
@@ -1085,8 +1085,8 @@ body {
 } */
  
 .my-profile-photo img {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border-radius: 50%;
     display: block;
@@ -1295,13 +1295,13 @@ body {
     margin-top: 60px;
 }
 
-/* Center only the last card */
+/* Center only the last card
 .project-card:last-child {
     grid-column: 1 / -1;             
     justify-self: center;            
     width: 100%;                      
     max-width: 500px;               
-}
+} */
 
 
 .project-card {
@@ -1870,12 +1870,28 @@ body {
         height: 160px;
     }
     
+    .my-profile-photo img {
+        width: 220px;
+        height: 220px;
+    }
+    
     .hero-cta {
         justify-content: center;
     }
     
     .hero-social {
         justify-content: center;
+    }
+    
+    .hero-location {
+        font-size: 14px;
+        justify-content: center;
+    }
+    
+    .hero-social a {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
     }
     
     .projects-grid {
@@ -1910,11 +1926,11 @@ body {
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .hero-subtitle {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     
     .hero-description {
@@ -1933,6 +1949,11 @@ body {
     .circle-content {
         width: 140px;
         height: 140px;
+    }
+    
+    .my-profile-photo img {
+        width: 200px;
+        height: 200px;
     }
     
     .profile-placeholder i {
@@ -1954,6 +1975,72 @@ body {
     .contact-form {
         padding: 25px;
     }
+    
+    .hero-location {
+        font-size: 13px;
+    }
+    
+    .hero-social a {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #779ECB;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease;
+    filter: drop-shadow(0 0 8px rgba(119, 158, 203, 0.8));
+}
+
+.custom-cursor::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #966FD6;
+}
+
+.custom-cursor.hover {
+    transform: scale(1.5);
+    border-bottom-color: #B3CDE0;
+    filter: drop-shadow(0 0 12px rgba(179, 205, 224, 0.9));
+}
+
+.custom-cursor.hover::before {
+    border-bottom-color: #779ECB;
+}
+
+.custom-cursor.click {
+    transform: scale(0.8);
+    border-bottom-color: #966FD6;
+    filter: drop-shadow(0 0 6px rgba(150, 111, 214, 0.7));
+}
+
+.custom-cursor.click::before {
+    border-bottom-color: #779ECB;
+}
+
+/* Hide default cursor */
+body {
+    cursor: none;
+}
+
+/* Show default cursor on interactive elements for accessibility */
+a, button, input, textarea, select, .btn, .nav-link, .hero-social a, .contact-social a {
+    cursor: none;
 }
 
 /* Smooth scrolling animations */

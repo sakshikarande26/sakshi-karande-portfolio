@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnimations();
     initContactForm();
     initMobileMenu();
+    initCustomCursor();
 });
 
 // Enhanced Cursor-Responsive Particle Background System
@@ -42,7 +43,6 @@ function initParticleBackground() {
 
     // Track touch movement for mobile
     document.addEventListener('touchmove', (e) => {
-        e.preventDefault();
         if (e.touches.length > 0) {
             mouseX = e.touches[0].clientX;
             mouseY = e.touches[0].clientY;
@@ -53,7 +53,7 @@ function initParticleBackground() {
                 isInteracting = false;
             }, 150);
         }
-    }, { passive: false });
+    }, { passive: true });
 
     // Touch start/end events
     document.addEventListener('touchstart', (e) => {
@@ -228,12 +228,13 @@ function initEnhancedPhotoCircle() {
     if (!circleContainer) return;
     
     const circleParticles = [];
-    const particleCount = 45; // 45 particles specifically for the circle
-    const colors = ['#779ECB', '#B3CDE0', '#966FD6'];
+    const particleCount = 75; // Increased to 75 particles for more dynamic effect
+    const colors = ['#779ECB', '#B3CDE0', '#966FD6', '#8BA8D1', '#A47FDB'];
     
-    // Circle properties
-    const centerX = 175; // Half of 350px
-    const centerY = 175;
+    // Circle properties - get actual circle dimensions
+    const circleRect = circleContainer.getBoundingClientRect();
+    const centerX = circleRect.width / 2;
+    const centerY = circleRect.height / 2;
     const innerRadius = 120;
     const outerRadius = 200;
     
@@ -300,7 +301,7 @@ function initEnhancedPhotoCircle() {
     }
     
     // Mouse tracking for the photo circle area
-    const photoCircle = document.getElementById('photo-circle');
+    const photoCircle = document.getElementById('animated-circle');
     if (photoCircle) {
         photoCircle.addEventListener('mouseenter', () => {
             isHoveringCircle = true;
@@ -335,27 +336,31 @@ function initEnhancedPhotoCircle() {
             let scale = 1;
             let glowIntensity = 1;
             
-            // Cursor interaction when hovering over circle
+            // Enhanced cursor interaction when hovering over circle
             if (isHoveringCircle) {
                 const dx = circleMouseX - orbitalX;
                 const dy = circleMouseY - orbitalY;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                const maxInteractionDistance = 80;
+                const maxInteractionDistance = 120; // Increased interaction range
                 
                 if (distance < maxInteractionDistance) {
                     const strength = (maxInteractionDistance - distance) / maxInteractionDistance;
                     
-                    // Repulsion effect
-                    const repulsionForce = 30 * strength;
+                    // Enhanced repulsion effect
+                    const repulsionForce = 50 * strength;
                     const angle = Math.atan2(dy, dx);
                     
                     finalX = orbitalX - Math.cos(angle) * repulsionForce;
                     finalY = orbitalY - Math.sin(angle) * repulsionForce;
                     
                     // Enhanced visual effects
-                    opacity = Math.min(particle.baseOpacity + strength * 0.5, 1);
-                    scale = 1 + strength * 0.5;
-                    glowIntensity = 1 + strength * 2;
+                    opacity = Math.min(particle.baseOpacity + strength * 0.8, 1);
+                    scale = 1 + strength * 0.8;
+                    glowIntensity = 1 + strength * 3;
+                    
+                    // Add rotation effect based on cursor movement
+                    const rotationSpeed = strength * 0.1;
+                    particle.style.transform += ` rotate(${rotationSpeed}deg)`;
                 }
             }
             
@@ -382,15 +387,344 @@ function initEnhancedPhotoCircle() {
     // Start the animation loop
     updateCircleParticles();
     
+    // Add photo-specific floating particles
+    initPhotoFloatingParticles();
+    
+    // Add additional dynamic particles
+    initDynamicPhotoParticles();
+    
     // Resize handler
     window.addEventListener('resize', () => {
         // Recalculate positions if needed
-        const photoCircleElement = document.querySelector('.photo-circle');
+        const photoCircleElement = document.querySelector('.animated-circle');
         if (photoCircleElement) {
             const rect = photoCircleElement.getBoundingClientRect();
             // Update center coordinates if circle position changes
         }
+        
+        // Recalculate particle positions after resize
+        setTimeout(() => {
+            updateCircleParticles();
+        }, 100);
     });
+}
+
+// Photo Floating Particles System
+function initPhotoFloatingParticles() {
+    const photoContainer = document.querySelector('.circle-content');
+    if (!photoContainer) return;
+    
+    const floatingParticles = [];
+    const floatingParticleCount = 15;
+    const colors = ['#779ECB', '#B3CDE0', '#966FD6', '#8BA8D1'];
+    
+    function createFloatingParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle';
+        
+        // Random size between 2-6px
+        const size = Math.random() * 4 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        // Random color
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.backgroundColor = color;
+        particle.style.boxShadow = `0 0 ${size * 3}px ${color}80`;
+        
+        // Random starting position around the photo
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 140 + Math.random() * 60; // Around the photo
+        const startX = Math.cos(angle) * distance;
+        const startY = Math.sin(angle) * distance;
+        
+        // Center the particles relative to the photo container
+        const photoRect = photoContainer.getBoundingClientRect();
+        const photoCenterX = photoRect.width / 2;
+        const photoCenterY = photoRect.height / 2;
+        
+        particle.style.left = (photoCenterX + startX) + 'px';
+        particle.style.top = (photoCenterY + startY) + 'px';
+        particle.style.position = 'absolute';
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+        particle.style.opacity = Math.random() * 0.6 + 0.2;
+        particle.style.zIndex = '10';
+        
+        photoContainer.appendChild(particle);
+        
+        // Store particle properties
+        particle.baseX = startX;
+        particle.baseY = startY;
+        particle.size = size;
+        particle.color = color;
+        particle.baseOpacity = parseFloat(particle.style.opacity);
+        
+        // Floating animation
+        const duration = Math.random() * 8 + 6;
+        const xMovement = (Math.random() - 0.5) * 100;
+        const yMovement = (Math.random() - 0.5) * 100;
+        
+        gsap.to(particle, {
+            duration: duration,
+            x: xMovement,
+            y: yMovement,
+            rotation: Math.random() * 360,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+        
+        return particle;
+    }
+    
+    // Create floating particles
+    for (let i = 0; i < floatingParticleCount; i++) {
+        floatingParticles.push(createFloatingParticle());
+    }
+    
+    // Cursor interaction for floating particles
+    let photoMouseX = 0;
+    let photoMouseY = 0;
+    let isHoveringPhoto = false;
+    
+    photoContainer.addEventListener('mouseenter', () => {
+        isHoveringPhoto = true;
+    });
+    
+    photoContainer.addEventListener('mouseleave', () => {
+        isHoveringPhoto = false;
+    });
+    
+    photoContainer.addEventListener('mousemove', (e) => {
+        const rect = photoContainer.getBoundingClientRect();
+        photoMouseX = e.clientX - rect.left;
+        photoMouseY = e.clientY - rect.top;
+    });
+    
+    // Update floating particles
+    function updateFloatingParticles() {
+        floatingParticles.forEach(particle => {
+            if (!particle) return;
+            
+            const rect = particle.getBoundingClientRect();
+            const particleX = rect.left + rect.width / 2;
+            const particleY = rect.top + rect.height / 2;
+            
+            if (isHoveringPhoto) {
+                const dx = photoMouseX - particleX;
+                const dy = photoMouseY - particleY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 100;
+                
+                if (distance < maxDistance) {
+                    const strength = (maxDistance - distance) / maxDistance;
+                    
+                    // Attraction effect towards cursor
+                    const attractionForce = 20 * strength;
+                    const angle = Math.atan2(dy, dx);
+                    
+                    const targetX = particle.baseX + Math.cos(angle) * attractionForce;
+                    const targetY = particle.baseY + Math.sin(angle) * attractionForce;
+                    
+                    gsap.to(particle, {
+                        duration: 0.3,
+                        x: targetX - particle.baseX,
+                        y: targetY - particle.baseY,
+                        opacity: Math.min(particle.baseOpacity + strength * 0.6, 1),
+                        scale: 1 + strength * 0.4,
+                        ease: "power2.out"
+                    });
+                    
+                    // Enhanced glow
+                    const glowSize = particle.size * (2 + strength * 2);
+                    particle.style.boxShadow = `0 0 ${glowSize}px ${particle.color}90`;
+                }
+            } else {
+                // Return to base state
+                gsap.to(particle, {
+                    duration: 1,
+                    opacity: particle.baseOpacity,
+                    scale: 1,
+                    ease: "power2.out"
+                });
+                
+                particle.style.boxShadow = `0 0 ${particle.size * 3}px ${particle.color}80`;
+            }
+        });
+        
+        requestAnimationFrame(updateFloatingParticles);
+    }
+    
+    updateFloatingParticles();
+}
+
+// Dynamic Photo Particles System
+function initDynamicPhotoParticles() {
+    const photoContainer = document.querySelector('.animated-circle');
+    if (!photoContainer) return;
+    
+    const dynamicParticles = [];
+    const dynamicParticleCount = 25; // Additional dynamic particles
+    const colors = ['#779ECB', '#B3CDE0', '#966FD6', '#8BA8D1', '#A47FDB', '#C4A5F5'];
+    
+    function createDynamicParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'dynamic-particle';
+        
+        // Random size between 2-8px
+        const size = Math.random() * 6 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        // Random color
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.backgroundColor = color;
+        particle.style.boxShadow = `0 0 ${size * 4}px ${color}90, 0 0 ${size * 8}px ${color}60`;
+        
+        // Random starting position around the circle
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 150 + Math.random() * 100; // Wider range
+        const startX = Math.cos(angle) * distance;
+        const startY = Math.sin(angle) * distance;
+        
+        // Center the particles relative to the circle container
+        const circleRect = photoContainer.getBoundingClientRect();
+        const circleCenterX = circleRect.width / 2;
+        const circleCenterY = circleRect.height / 2;
+        
+        particle.style.left = (circleCenterX + startX) + 'px';
+        particle.style.top = (circleCenterY + startY) + 'px';
+        particle.style.position = 'absolute';
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+        particle.style.opacity = Math.random() * 0.8 + 0.2;
+        particle.style.zIndex = '5';
+        
+        photoContainer.appendChild(particle);
+        
+        // Store particle properties
+        particle.baseX = startX;
+        particle.baseY = startY;
+        particle.size = size;
+        particle.color = color;
+        particle.baseOpacity = parseFloat(particle.style.opacity);
+        particle.movementType = Math.random() > 0.5 ? 'spiral' : 'wave';
+        particle.movementSpeed = Math.random() * 0.02 + 0.01;
+        particle.currentAngle = angle;
+        particle.currentDistance = distance;
+        
+        // Dynamic animation based on movement type
+        if (particle.movementType === 'spiral') {
+            // Spiral movement
+            gsap.to(particle, {
+                duration: Math.random() * 10 + 15,
+                x: (Math.random() - 0.5) * 200,
+                y: (Math.random() - 0.5) * 200,
+                rotation: Math.random() * 720 - 360,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        } else {
+            // Wave movement
+            gsap.to(particle, {
+                duration: Math.random() * 8 + 12,
+                x: Math.sin(Math.random() * Math.PI * 2) * 150,
+                y: Math.cos(Math.random() * Math.PI * 2) * 150,
+                scale: Math.random() * 0.5 + 0.8,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+        
+        return particle;
+    }
+    
+    // Create dynamic particles
+    for (let i = 0; i < dynamicParticleCount; i++) {
+        dynamicParticles.push(createDynamicParticle());
+    }
+    
+    // Enhanced cursor interaction for dynamic particles
+    let dynamicMouseX = 0;
+    let dynamicMouseY = 0;
+    let isHoveringDynamic = false;
+    
+    photoContainer.addEventListener('mouseenter', () => {
+        isHoveringDynamic = true;
+    });
+    
+    photoContainer.addEventListener('mouseleave', () => {
+        isHoveringDynamic = false;
+    });
+    
+    photoContainer.addEventListener('mousemove', (e) => {
+        const rect = photoContainer.getBoundingClientRect();
+        dynamicMouseX = e.clientX - rect.left;
+        dynamicMouseY = e.clientY - rect.top;
+    });
+    
+    // Update dynamic particles
+    function updateDynamicParticles() {
+        dynamicParticles.forEach(particle => {
+            if (!particle) return;
+            
+            const rect = particle.getBoundingClientRect();
+            const particleX = rect.left + rect.width / 2;
+            const particleY = rect.top + rect.height / 2;
+            
+            if (isHoveringDynamic) {
+                const dx = dynamicMouseX - particleX;
+                const dy = dynamicMouseY - particleY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 150;
+                
+                if (distance < maxDistance) {
+                    const strength = (maxDistance - distance) / maxDistance;
+                    
+                    // Enhanced attraction/repulsion effect
+                    const effectForce = 30 * strength;
+                    const angle = Math.atan2(dy, dx);
+                    
+                    // Alternate between attraction and repulsion
+                    const isAttraction = particle.movementType === 'spiral';
+                    const forceMultiplier = isAttraction ? 1 : -1;
+                    
+                    const targetX = particle.baseX + Math.cos(angle) * effectForce * forceMultiplier;
+                    const targetY = particle.baseY + Math.sin(angle) * effectForce * forceMultiplier;
+                    
+                    gsap.to(particle, {
+                        duration: 0.4,
+                        x: targetX - particle.baseX,
+                        y: targetY - particle.baseY,
+                        opacity: Math.min(particle.baseOpacity + strength * 0.7, 1),
+                        scale: 1 + strength * 0.6,
+                        ease: "power2.out"
+                    });
+                    
+                    // Enhanced glow effect
+                    const glowSize = particle.size * (3 + strength * 3);
+                    particle.style.boxShadow = `0 0 ${glowSize}px ${particle.color}90, 0 0 ${glowSize * 2}px ${particle.color}70`;
+                }
+            } else {
+                // Return to base state
+                gsap.to(particle, {
+                    duration: 1.5,
+                    opacity: particle.baseOpacity,
+                    scale: 1,
+                    ease: "power2.out"
+                });
+                
+                particle.style.boxShadow = `0 0 ${particle.size * 4}px ${particle.color}90, 0 0 ${particle.size * 8}px ${particle.color}60`;
+            }
+        });
+        
+        requestAnimationFrame(updateDynamicParticles);
+    }
+    
+    updateDynamicParticles();
 }
 
 // Enhanced Navigation functionality
@@ -607,29 +941,9 @@ function initAnimations() {
     //     });
     // });
 
-    // updated above code such that last child fades inplace
-    const projectCards = gsap.utils.toArray('.project-card');
-    projectCards.forEach((card, index) => {
-    // Special handling for the last card
-    if (index === projectCards.length - 1) {
-        gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play none none reverse"
-        },
-        duration: 0.8,
-        y: 50,           // Slides up only
-        x: 0,            // No slide from left/right
-        opacity: 0,
-        scale: 0.9,
-        rotation: 0,     // No rotation
-        ease: "power3.out",
-        delay: index * 0.15
-        });
-    } else {
-        gsap.from(card, {
+const projectCards = gsap.utils.toArray('.project-card');
+projectCards.forEach((card, index) => {
+    gsap.from(card, {
         scrollTrigger: {
             trigger: card,
             start: "top 85%",
@@ -644,9 +958,8 @@ function initAnimations() {
         rotation: index % 2 === 0 ? -5 : 5,
         ease: "power3.out",
         delay: index * 0.15
-        });
-    }
     });
+});
 
     // Skills categories animations
     gsap.utils.toArray('.skill-category').forEach((category, index) => {
@@ -1102,3 +1415,63 @@ function optimizeForPerformance() {
 
 // Initialize performance optimizations
 optimizeForPerformance();
+
+// Custom Cursor System
+function initCustomCursor() {
+    // Create custom cursor element
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    
+    // Track mouse movement
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Smooth cursor animation
+    function updateCursor() {
+        // Smooth following effect
+        cursorX += (mouseX - cursorX) * 0.1;
+        cursorY += (mouseY - cursorY) * 0.1;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        requestAnimationFrame(updateCursor);
+    }
+    
+    updateCursor();
+    
+    // Hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .nav-link, .hero-social a, .contact-social a, input, textarea, select');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    });
+    
+    // Click effect
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('click');
+    });
+    
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('click');
+    });
+    
+    // Hide cursor on mobile
+    if ('ontouchstart' in window) {
+        cursor.style.display = 'none';
+    }
+}
