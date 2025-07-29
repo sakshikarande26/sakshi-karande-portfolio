@@ -2063,3 +2063,43 @@ a, button, input, textarea, select, .btn, .nav-link, .hero-social a, .contact-so
     opacity: 0;
     transform: scale(0.8);
 }
+
+/* Responsive styles for hero section */
+.hero-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #B3CDE0;
+    font-size: clamp(14px, 2vw, 16px);
+    margin-bottom: 20px;
+}
+
+.about-me-section .contact-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.about-me-section .contact-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(119, 158, 203, 0.1);
+    border: 1px solid rgba(119, 158, 203, 0.2);
+    border-radius: 50%;
+    color: #779ECB;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.about-me-section .contact-social a:hover {
+    background: #779ECB;
+    color: #0a0a0a;
+    transform: scale(1.1);
+}
+
+.hero-location i {
+    color: #779ECB;
+}
