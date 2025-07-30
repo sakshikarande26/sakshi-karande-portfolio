@@ -892,6 +892,41 @@ body {
                 radial-gradient(circle at 70% 30%, rgba(179, 205, 224, 0.1) 0%, transparent 50%);
 }
 
+/* Parallax Background */
+.parallax-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.2s ease-out;
+}
+
+.layer-bg {
+    background-image: radial-gradient(ellipse at center, rgba(119, 158, 203, 0.1) 0%, transparent 70%);
+}
+
+.layer-mid {
+    background-image: radial-gradient(ellipse at 20% 80%, rgba(179, 205, 224, 0.08) 0%, transparent 60%);
+}
+
+.layer-fg {
+    background-image: radial-gradient(ellipse at 80% 30%, rgba(119, 158, 203, 0.05) 0%, transparent 50%);
+}
+
 .hero-layout {
     display: grid;
     grid-template-columns: 1fr 280px;

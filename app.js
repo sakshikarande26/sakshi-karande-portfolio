@@ -3,6 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    initParallax();
     initParticleBackground();
     initEnhancedPhotoCircle();
     initNavigation();
@@ -11,6 +12,32 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initCustomCursor();
 });
+
+function initParallax() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    const parallaxLayers = heroSection.querySelectorAll('.parallax-layer');
+
+    heroSection.addEventListener('mousemove', function(e) {
+        const { clientX, clientY } = e;
+        const x = (clientX / window.innerWidth) - 0.5;
+        const y = (clientY / window.innerHeight) - 0.5;
+
+        parallaxLayers.forEach(layer => {
+            const speed = layer.getAttribute('data-speed');
+            const xPos = x * speed * 100;
+            const yPos = y * speed * 100;
+
+            gsap.to(layer, {
+                x: xPos,
+                y: yPos,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        });
+    });
+}
 
 // Enhanced Cursor-Responsive Particle Background System
 function initParticleBackground() {
